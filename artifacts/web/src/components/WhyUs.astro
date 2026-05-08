@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import appraiserPhoto from '../assets/about/appraiser-photo.jpg';
 import business from '../data/business.json';
 
 const points = [
@@ -30,50 +32,75 @@ const points = [
 ---
 
 <section class="py-20 bg-brand-900 text-white relative overflow-hidden">
-  <!-- Decorative background -->
-  <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 25% 50%, #5a8bc4 0%, transparent 60%), radial-gradient(circle at 75% 50%, #ea580c 0%, transparent 60%);" />
+  <!-- Subtle background glow -->
+  <div class="absolute inset-0 opacity-8" style="background-image: radial-gradient(circle at 70% 50%, #3568a6 0%, transparent 55%);" />
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
-    <!-- Section label -->
-    <div class="flex items-center gap-3 mb-4 justify-center">
-      <div class="h-px w-12 bg-cta-500" />
-      <span class="text-cta-400 text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
-      <div class="h-px w-12 bg-cta-500" />
-    </div>
-
-    <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center tracking-tighter mb-14">
-      Why Florida Banks and Attorneys<br class="hidden md:block" /> Rely on Us
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {points.map(p => (
-        <div class="group flex gap-4 items-start p-6 rounded-xl bg-white/5 border border-white/8 hover:bg-white/10 hover:border-white/15 transition-all duration-300">
-          <div class="w-9 h-9 rounded-lg bg-cta-600/20 border border-cta-500/30 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-cta-600/30 transition-colors">
-            <svg class="w-4.5 h-4.5 text-cta-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <p class="font-bold text-white mb-1.5">{p.title}</p>
-            <p class="text-brand-300 text-sm leading-relaxed">{p.body}</p>
+      <!-- Left: photo -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden shadow-2xl shadow-brand-950/50">
+          <Image
+            src={appraiserPhoto}
+            alt="Jorge V. Canellas, State Certified General Appraiser"
+            width={600}
+            height={700}
+            class="w-full h-[480px] lg:h-[560px] object-cover"
+          />
+          <!-- Overlay name card -->
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-900/95 to-transparent px-6 pb-6 pt-14">
+            <p class="text-white font-bold text-lg leading-tight">Jorge V. Canellas</p>
+            <p class="text-brand-300 text-sm mt-1">{business.primaryAppraiser.license} · State Certified General</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              {business.compliance.slice(0, 3).map(c => (
+                <span class="bg-white/15 border border-white/20 text-white rounded-full px-3 py-1 text-xs font-semibold">{c}</span>
+              ))}
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-
-    <!-- Bottom credential row -->
-    <div class="mt-14 pt-10 border-t border-white/10 flex flex-wrap justify-center gap-4">
-      {business.compliance.map(c => (
-        <div class="bg-white/8 border border-white/12 rounded-full px-5 py-2 text-sm font-semibold text-brand-200">
-          {c}
+        <!-- Floating credential badge -->
+        <div class="absolute -top-4 -right-4 bg-cta-600 text-white rounded-2xl px-5 py-3 shadow-xl shadow-cta-700/40 text-center">
+          <p class="font-black text-2xl leading-none">{business.yearsExperience}+</p>
+          <p class="text-xs font-semibold mt-1 text-cta-100">Years in FL</p>
         </div>
-      ))}
-      <div class="bg-white/8 border border-white/12 rounded-full px-5 py-2 text-sm font-semibold text-brand-200">
-        License RZ3108
       </div>
-      <div class="bg-white/8 border border-white/12 rounded-full px-5 py-2 text-sm font-semibold text-brand-200">
-        MAI-Supported
+
+      <!-- Right: points -->
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px w-10 bg-cta-500" />
+          <span class="text-cta-400 text-xs font-bold uppercase tracking-widest">Why Choose Us</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tighter mb-10 leading-tight">
+          Why Florida Banks and Attorneys<br class="hidden md:block" /> Rely on Us
+        </h2>
+
+        <div class="space-y-5">
+          {points.map(p => (
+            <div class="flex gap-4 items-start group">
+              <div class="w-8 h-8 rounded-lg bg-cta-600/20 border border-cta-500/30 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-cta-600/35 transition-colors">
+                <svg class="w-4 h-4 text-cta-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-white mb-1">{p.title}</p>
+                <p class="text-brand-300 text-sm leading-relaxed">{p.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10">
+          <a
+            href="#quote"
+            class="inline-block bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-xl px-8 py-4 transition-all duration-200 shadow-lg shadow-cta-700/30 hover:shadow-xl hover:-translate-y-0.5 text-sm"
+          >
+            Get Your Free Quote →
+          </a>
+        </div>
       </div>
     </div>
   </div>
