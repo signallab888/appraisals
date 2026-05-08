@@ -1,0 +1,26 @@
+"Sí, procede con ese plan exacto. Cinco cosas que verifiques mientras construyes:                                                   
+  ▎                    
+  ▎ 1. Imágenes vía astro:assets SIEMPRE. Usa el componente <Image> de astro:assets, NO <img> plano. Genera WebP responsive automático. 
+  ▎ La hero image va con loading="eager" y fetchpriority="high", el resto con loading="lazy".
+  ▎                                                                                                                                     
+  ▎ 2. Fuentes self-hosted. Instala @fontsource-variable/inter por npm. NO uses Google Fonts CDN. En src/styles/global.css importa      
+  ▎ @fontsource-variable/inter.
+  ▎                                                                                                                                     
+  ▎ 3. FAQ con <details> nativo. Sin librería de accordion, sin JavaScript. HTML/CSS puro. El brief tiene el código exacto en §7.5.     
+  ▎
+  ▎ 4. Form a Formspree. Usa endpoint https://formspree.io/f/xxxxxxx como placeholder. El cliente activará el form ID real después.     
+  ▎ Disparar dataLayer.push({ event: 'quote_submitted' }) después del success.
+  ▎                                                                                                                                     
+  ▎ 5. Anti-IA en el copy final. Antes de marcar terminado, busca con grep estas palabras en src/:                                      
+  ▎
+  ▎ grep -rn -i "elevate\|leverage\|seamless\|robust\|tailored\|navigate\|streamline\|empower\|whether you\|look no further\|in today"  
+  ▎ src/          
+  ▎                                                                                                                                     
+  ▎ Si aparece alguna → reescribir esa línea siguiendo §10 del brief.                                                                   
+  ▎
+  ▎ Cuando termines, corre npm run build y reporta:                                                                                     
+  ▎ - Tamaño de bundle JS final
+  ▎ - Output del PageSpeed (puedes usar npx unlighthouse o el preview)                                                                  
+  ▎ - Cualquier warning de TypeScript                                                                                                   
+  ▎                                                                                                                                     
+  ▎ Dale."                         

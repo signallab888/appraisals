@@ -1,45 +1,74 @@
-# [Project name]
+# Commercial Appraiser FL
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A static commercial real estate appraisal website for **commercialappraiserfl.com** (Appraisers of America Inc.) built with Astro 4 + Tailwind CSS 3.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/web run dev` — run the dev server (port 22333, workflow: `artifacts/web: web`)
+- `pnpm --filter @workspace/web run build` — build to `artifacts/web/dist/public/`
+- `pnpm --filter @workspace/web run typecheck` — typecheck with `astro check`
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- pnpm workspaces, Node.js 24, TypeScript 5.7
+- **Astro 4** static site generator
+- **Tailwind CSS 3** (via `@astrojs/tailwind`)
+- **Sharp** — image optimization to WebP (must be in `onlyBuiltDependencies` in pnpm-workspace.yaml)
+- Inter font — self-hosted via `@fontsource-variable/inter`
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+```
+artifacts/web/
+  src/
+    assets/          # Images downloaded from GitHub repo signallab888/appraisals
+    components/      # All Astro components (HeaderSEO, HeroHome, FAQ, QuoteForm, etc.)
+    data/            # JSON data files (business.json, regions.json, faqs-*.json, etc.)
+    layouts/         # LayoutSEO.astro + LayoutLP.astro
+    lib/             # geo.ts (region detection), schema.ts (JSON-LD builders)
+    pages/
+      index.astro                        # Home page
+      lp/commercial-appraisal.astro      # Geo-aware landing page
+    styles/global.css                    # Tailwind imports + Inter font
+  public/
+    logo.svg         # Static logo (SVG — not processed by astro:assets)
+    favicon.svg      # Simple navy/white favicon
+    robots.txt       # Noindex for /lp/, sitemap reference
+  astro.config.mjs   # Astro config — PORT, outDir, allowedHosts
+  tailwind.config.mjs # Full design system (brand navy, cta orange, ink, surface, semantic)
+```
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- **Static output** — no server runtime. Geo detection in LP page defaults to "florida" at build time; `?city=` URL params are available client-side via CityPills component.
+- **SVG logo via `<img>`** — not routed through `astro:assets` since Sharp can't optimize SVGs. JPG hero images go through Sharp → WebP (627kB → ~18kB).
+- **Native `<details>`/`<summary>` FAQ** — zero JS accordion. CSS-only chevron rotation on `details[open]`.
+- **Formspree placeholder** — form action is `https://formspree.io/f/xxxxxxx`. Replace with real endpoint before launch.
+- **GTM placeholder** — `GTM-XXXXXXX` in both layouts. Replace before launch.
+- **@astrojs/sitemap removed** — v3.7.2 has a bug with `filter` option. Add back when fixed or generate sitemap manually.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- **Home page** (`/`) — Full SEO page: sticky header, hero + quote form, trust bar, who we serve, 12-type property grid, process timeline (4 steps), pricing table, statewide coverage map, why us (6 badges), testimonials, FAQ (10 questions), final CTA.
+- **Landing page** (`/lp/commercial-appraisal/`) — noindex, geo-aware (defaults to Florida, adapts via `?city=` param), compact layout optimized for PPC.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Stack: Astro 4 + Tailwind CSS 3 ONLY. No React, Vue, or Svelte.
+- Use `<Image>` from `astro:assets` for raster images. Use `<img>` for SVGs.
+- Self-hosted Inter font via `@fontsource-variable/inter`.
+- Native `<details>` for FAQ — no JS accordion libraries.
+- Anti-AI copy: grep for "delve", "seamless", "leverage", "empower", "game-changer", etc. before every delivery.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- `sharp` must be listed in `onlyBuiltDependencies` in `pnpm-workspace.yaml` AND as a direct dep in `package.json`, or Astro can't find it for image optimization.
+- `Astro.request.headers` is unavailable in static output mode. Use `new Headers()` as fallback.
+- Dev server needs `allowedHosts: 'all'` in `astro.config.mjs` for Replit's proxied preview.
+- Logo SVG is 69kB — consider optimizing with SVGO before production.
+- Formspree and GTM IDs are placeholders. Replace before deploying to production.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+- BRIEF.md source: https://github.com/signallab888/appraisals

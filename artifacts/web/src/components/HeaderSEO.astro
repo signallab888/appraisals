@@ -1,0 +1,50 @@
+---
+import business from '../data/business.json';
+---
+
+<header class="sticky top-0 z-50 bg-brand-700 shadow-md">
+  <!-- Top bar: phone numbers -->
+  <div class="bg-brand-900 text-brand-200 text-xs py-1.5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center md:justify-end gap-4">
+      <a href={`tel:${business.phones.primary}`} class="hover:text-white transition-colors">
+        {business.phones.primary_label}: <strong class="text-white">{business.phones.primary_display}</strong>
+      </a>
+      <span class="hidden md:inline text-brand-600">|</span>
+      <a href={`tel:${business.phones.secondary}`} class="hover:text-white transition-colors">
+        {business.phones.secondary_label}: <strong class="text-white">{business.phones.secondary_display}</strong>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0" aria-label="Appraisers of America — Home">
+      <img
+        src="/logo.svg"
+        alt="Appraisers of America"
+        width="180"
+        height="48"
+        loading="eager"
+        fetchpriority="high"
+        class="h-10 w-auto"
+      />
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-brand-200">
+      <a href="/#services" class="hover:text-white transition-colors">Services</a>
+      <a href="/#coverage" class="hover:text-white transition-colors">Coverage</a>
+      <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+      <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
+    </div>
+
+    <!-- CTA button -->
+    <a
+      href="/#quote"
+      class="bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-5 py-2.5 text-sm transition-colors ml-4 flex-shrink-0"
+    >
+      Get a Free Quote
+    </a>
+  </nav>
+</header>

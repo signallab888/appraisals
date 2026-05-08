@@ -1,0 +1,73 @@
+---
+const regions = [
+  {
+    label: 'Central Florida',
+    cities: ['Orlando', 'Tampa', 'Lakeland', 'Kissimmee', 'Sanford', 'Lake Mary',
+             'Winter Park', 'Ocala', 'Daytona Beach', 'Melbourne', 'The Villages',
+             'Clermont', 'Leesburg'],
+  },
+  {
+    label: 'South Florida',
+    cities: ['Miami', 'Fort Lauderdale', 'West Palm Beach', 'Boca Raton',
+             'Hialeah', 'Doral', 'Coral Gables', 'Naples', 'Fort Myers', 'Cape Coral'],
+  },
+  {
+    label: 'North Florida',
+    cities: ['Jacksonville', 'Gainesville', 'Tallahassee', 'Pensacola', 'St. Augustine'],
+  },
+];
+---
+
+<section class="py-16 bg-surface-soft" id="coverage">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-ink-800 tracking-tight">
+        Florida Statewide — All 67 Counties
+      </h2>
+      <p class="text-ink-500 mt-3">Two offices. One point of contact. Appraisals anywhere in the state.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+      <!-- Florida SVG map -->
+      <div class="lg:col-span-2 flex justify-center">
+        <div class="w-full max-w-xs">
+          <img
+            src="/icons/florida-map.svg"
+            alt="Florida state map — Appraisers of America serves all 67 counties"
+            loading="lazy"
+            class="w-full h-auto opacity-80"
+            onerror="this.style.display='none'"
+          />
+          <!-- Fallback: simple visual if SVG not available -->
+          <div class="bg-brand-700 rounded-xl p-8 text-center text-white">
+            <p class="text-4xl font-bold">67</p>
+            <p class="text-brand-300 text-sm mt-1">Florida Counties</p>
+            <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+              <div class="bg-brand-600 rounded px-2 py-1.5">📍 Orlando</div>
+              <div class="bg-brand-600 rounded px-2 py-1.5">📍 Miami</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- City lists by region -->
+      <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {regions.map(r => (
+          <div>
+            <h3 class="text-brand-700 font-semibold text-sm uppercase tracking-wide mb-3 pb-2 border-b border-brand-200">
+              {r.label}
+            </h3>
+            <ul class="space-y-1.5">
+              {r.cities.map(city => (
+                <li class="text-ink-600 text-sm flex items-center gap-1.5">
+                  <span class="w-1 h-1 rounded-full bg-brand-400 flex-shrink-0" />
+                  {city}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

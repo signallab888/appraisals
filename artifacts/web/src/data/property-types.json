@@ -1,0 +1,14 @@
+[
+  { "slug": "office",      "name": "Office Buildings",     "blurb": "Class A through medical office condos",  "icon": "icon-suitcase" },
+  { "slug": "retail",      "name": "Retail",                "blurb": "Strip centers, freestanding, mixed-use", "icon": "icon-clipboard" },
+  { "slug": "industrial",  "name": "Industrial & Warehouse","blurb": "Distribution, flex, manufacturing",      "icon": "icon-clipboard" },
+  { "slug": "hotel",       "name": "Hotels & Motels",       "blurb": "Going concern plus real estate",         "icon": "icon-suitcase" },
+  { "slug": "multifamily", "name": "Multifamily",           "blurb": "5+ units, garden-style to mid-rise",    "icon": "icon-suitcase" },
+  { "slug": "restaurant",  "name": "Restaurants",           "blurb": "With or without liquor license",        "icon": "icon-clipboard" },
+  { "slug": "self-storage","name": "Self-Storage",          "blurb": "Climate-controlled and standard",       "icon": "icon-suitcase" },
+  { "slug": "land",        "name": "Vacant Land",           "blurb": "Entitled, raw, agricultural",           "icon": "icon-check" },
+  { "slug": "marina",      "name": "Marinas",               "blurb": "Wet slip and dry stack facilities",     "icon": "icon-suitcase" },
+  { "slug": "mhp",         "name": "Mobile Home Parks",     "blurb": "All-age and 55+ communities",           "icon": "icon-clipboard" },
+  { "slug": "religious",   "name": "Religious Properties",  "blurb": "Churches, synagogues, mosques",         "icon": "icon-clipboard" },
+  { "slug": "medical",     "name": "Medical & Dental",      "blurb": "Surgery centers, clinics, condos",      "icon": "icon-support" }
+]

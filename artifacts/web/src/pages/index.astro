@@ -1,0 +1,37 @@
+---
+import LayoutSEO from '../layouts/LayoutSEO.astro';
+import HeroHome from '../components/HeroHome.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhoWeServe from '../components/WhoWeServe.astro';
+import PropertyTypeGrid from '../components/PropertyTypeGrid.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
+import PricingTable from '../components/PricingTable.astro';
+import CoverageMap from '../components/CoverageMap.astro';
+import WhyUs from '../components/WhyUs.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import faqs from '../data/faqs-home.json';
+import { buildOrgSchema, buildFaqSchema } from '../lib/schema';
+
+const orgSchema = buildOrgSchema();
+const faqSchema = buildFaqSchema(faqs);
+---
+
+<LayoutSEO
+  title="Commercial Real Estate Appraiser Florida | Appraisers of America"
+  description="State-certified commercial real estate appraisals across all 67 Florida counties. SBA loans, refinances, divorce, estate, tax appeals. Jorge V. Canellas, RZ3108. Free quote in 2 hours."
+  schema={[orgSchema, faqSchema]}
+>
+  <HeroHome />
+  <TrustBar />
+  <WhoWeServe />
+  <PropertyTypeGrid />
+  <ProcessTimeline />
+  <PricingTable />
+  <CoverageMap />
+  <WhyUs />
+  <Testimonials />
+  <FAQ data={faqs} />
+  <FinalCTA />
+</LayoutSEO>

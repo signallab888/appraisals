@@ -1,0 +1,56 @@
+---
+import QuoteForm from './QuoteForm.astro';
+import business from '../data/business.json';
+---
+
+<section class="py-16 bg-brand-700 text-white" id="contact">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Left: copy -->
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+          Get Your Free Commercial Appraisal Quote
+        </h2>
+        <p class="text-brand-200 text-base mb-6 leading-relaxed">
+          We respond within 2 business hours, Monday–Friday 8am–6pm.<br />
+          Saturday quotes also available.
+        </p>
+
+        <div class="space-y-3 text-sm text-brand-200">
+          <p>
+            <strong class="text-white">Orlando / Central FL:</strong>{' '}
+            <a href={`tel:${business.phones.primary}`} class="text-white hover:text-brand-200 transition-colors font-medium">
+              {business.phones.primary_display}
+            </a>
+          </p>
+          <p>
+            <strong class="text-white">Miami / South FL:</strong>{' '}
+            <a href={`tel:${business.phones.secondary}`} class="text-white hover:text-brand-200 transition-colors font-medium">
+              {business.phones.secondary_display}
+            </a>
+          </p>
+          <p>
+            <a href={`mailto:${business.email}`} class="text-brand-300 hover:text-white transition-colors">
+              {business.email}
+            </a>
+          </p>
+        </div>
+
+        <!-- Compliance badges -->
+        <div class="mt-8 flex flex-wrap gap-2">
+          {business.compliance.map(c => (
+            <span class="bg-brand-600 text-brand-200 rounded-full px-3 py-1 text-xs font-medium">{c}</span>
+          ))}
+          <span class="bg-brand-600 text-brand-200 rounded-full px-3 py-1 text-xs font-medium">License RZ3108</span>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <QuoteForm source="final-cta" heading="Free Quote in 2 Hours" id="quote-bottom" />
+      </div>
+
+    </div>
+  </div>
+</section>

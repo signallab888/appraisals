@@ -1,0 +1,14 @@
+---
+import business from '../data/business.json';
+---
+
+<footer class="bg-brand-900 text-brand-300 text-xs py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
+    <p>{business.legalName} · License RZ3108 · {business.phones.primary_display}</p>
+    <p>
+      <a href="/privacy" class="hover:text-brand-100 transition-colors">Privacy Policy</a>
+      <span class="mx-2">·</span>
+      © {new Date().getFullYear()} {business.legalName}
+    </p>
+  </div>
+</footer>

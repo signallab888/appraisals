@@ -1,0 +1,34 @@
+{
+  "central-fl": {
+    "label": "Central Florida",
+    "h1": "Commercial Real Estate Appraiser in Central Florida",
+    "subtitle": "State-certified appraisals across Orange, Seminole, Osceola, Lake, Polk, Volusia, and Brevard counties.",
+    "cities": ["Orlando", "Tampa", "Lakeland", "Kissimmee", "Sanford", "Lake Mary", "Winter Park", "Ocala", "Daytona Beach", "Melbourne", "Clermont", "Leesburg"],
+    "phone": "primary",
+    "officeLine": "Based in Orlando, serving all of Central Florida"
+  },
+  "south-fl": {
+    "label": "South Florida",
+    "h1": "Commercial Real Estate Appraiser in South Florida",
+    "subtitle": "State-certified appraisals across Miami-Dade, Broward, Palm Beach, Collier, and Lee counties.",
+    "cities": ["Miami", "Fort Lauderdale", "West Palm Beach", "Boca Raton", "Hialeah", "Doral", "Coral Gables", "Naples", "Fort Myers", "Cape Coral"],
+    "phone": "secondary",
+    "officeLine": "Based in Miami, serving all of South Florida"
+  },
+  "north-fl": {
+    "label": "North Florida",
+    "h1": "Commercial Real Estate Appraiser in North Florida",
+    "subtitle": "State-certified appraisals across Duval, Alachua, Leon, and Escambia counties.",
+    "cities": ["Jacksonville", "Gainesville", "Tallahassee", "Pensacola", "St. Augustine"],
+    "phone": "primary",
+    "officeLine": "Statewide coverage across North Florida"
+  },
+  "florida": {
+    "label": "Florida",
+    "h1": "Commercial Real Estate Appraiser in Florida",
+    "subtitle": "State-certified commercial appraisals in all 67 Florida counties.",
+    "cities": ["Orlando", "Tampa", "Miami", "Jacksonville", "Lakeland", "Kissimmee", "Naples", "Sanford"],
+    "phone": "primary",
+    "officeLine": "Two offices serving all of Florida"
+  }
+}

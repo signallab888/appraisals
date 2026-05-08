@@ -1,0 +1,39 @@
+---
+import propertyTypes from '../data/property-types.json';
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<section class={`${compact ? 'py-10' : 'py-16'} bg-white`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {!compact && (
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-ink-800 tracking-tight">
+          Every Commercial Property Type in Florida
+        </h2>
+        <p class="text-ink-500 mt-3 text-base">From office buildings to mobile home parks — if it's commercial, we appraise it.</p>
+      </div>
+    )}
+    {compact && (
+      <h3 class="text-xl font-semibold text-ink-800 mb-6 tracking-tight">Property Types We Appraise</h3>
+    )}
+
+    <div class={`grid gap-4 ${compact ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'}`}>
+      {propertyTypes.map(pt => (
+        <div class="bg-surface-soft rounded-lg p-4 hover:shadow-md transition-shadow border border-surface-line group">
+          <div class="w-8 h-8 bg-brand-100 rounded-md flex items-center justify-center mb-3 group-hover:bg-brand-200 transition-colors">
+            <svg class="w-4 h-4 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <p class="font-semibold text-ink-800 text-sm">{pt.name}</p>
+          {!compact && <p class="text-ink-500 text-xs mt-1">{pt.blurb}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

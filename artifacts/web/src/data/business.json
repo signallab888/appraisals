@@ -1,0 +1,34 @@
+{
+  "legalName": "Appraisers of America Inc.",
+  "shortName": "Appraisers of America",
+  "tagline": "Come to the best, forget the rest",
+  "domain": "commercialappraiserfl.com",
+  "phones": {
+    "primary": "+14078940201",
+    "primary_display": "(407) 894-0201",
+    "primary_label": "Orlando / Central FL",
+    "secondary": "+17864494885",
+    "secondary_display": "(786) 449-4885",
+    "secondary_label": "Miami / South FL"
+  },
+  "email": "info@commercialappraiserfl.com",
+  "primaryAppraiser": {
+    "name": "Jorge V. Canellas",
+    "license": "RZ3108",
+    "title": "State Certified General Real Estate Appraiser"
+  },
+  "yearsExperience": "20+",
+  "combinedYears": "35+",
+  "offices": [
+    { "city": "Orlando", "region": "Central Florida" },
+    { "city": "Miami", "region": "South Florida" }
+  ],
+  "languages": ["English", "Spanish"],
+  "compliance": ["USPAP", "FIRREA", "SBA 504/7(a) ready"],
+  "support": "MAI-supported reports",
+  "approachUsed": ["Income Approach", "Sales Comparison Approach", "Cost Approach"],
+  "reportTypes": ["Restricted Appraisal Report", "Appraisal Report", "Narrative"],
+  "countiesServed": 67,
+  "responseTime": "2 business hours",
+  "businessHours": "Monday–Friday 8am–6pm, Saturday by appointment"
+}

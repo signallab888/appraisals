@@ -1,0 +1,56 @@
+---
+import business from '../data/business.json';
+
+const points = [
+  {
+    title: 'State Certified',
+    body: `Jorge V. Canellas, ${business.primaryAppraiser.license}, certified general appraiser.`,
+  },
+  {
+    title: 'MAI-Supported Reports',
+    body: 'Backed by industry-standard methodology. Your bank knows what that means.',
+  },
+  {
+    title: `${business.yearsExperience} Years in Florida`,
+    body: 'Local market data — not pulled from a national database.',
+  },
+  {
+    title: 'Bilingual',
+    body: 'Full reports and consultation in English or Spanish.',
+  },
+  {
+    title: 'FIRREA Compliant',
+    body: 'Every report passes lender review the first time.',
+  },
+  {
+    title: 'Court-Defensible',
+    body: 'Testifying experience in Florida courts. USPAP-compliant from day one.',
+  },
+];
+---
+
+<section class="py-16 bg-brand-700 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+        Why Florida Banks and Attorneys Pick Us
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {points.map(p => (
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-md bg-brand-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-5 h-5 text-brand-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-white">{p.title}</p>
+            <p class="text-brand-200 text-sm mt-1 leading-relaxed">{p.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

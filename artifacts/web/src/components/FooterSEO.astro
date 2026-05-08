@@ -1,0 +1,63 @@
+---
+import business from '../data/business.json';
+---
+
+<footer class="bg-brand-900 text-brand-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Column 1: Identity -->
+      <div>
+        <p class="text-white font-semibold text-base mb-2">{business.legalName}</p>
+        <p class="text-sm mb-4">State Certified General Real Estate Appraiser<br />License RZ3108 — Jorge V. Canellas</p>
+        <p class="text-xs text-brand-400">USPAP Compliant · FIRREA Compliant<br />SBA 504/7(a) Ready · MAI-Supported Reports</p>
+      </div>
+
+      <!-- Column 2: Contact -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-3">Contact</p>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <span class="text-brand-400 text-xs block">{business.phones.primary_label}</span>
+            <a href={`tel:${business.phones.primary}`} class="hover:text-white transition-colors font-medium">
+              {business.phones.primary_display}
+            </a>
+          </li>
+          <li>
+            <span class="text-brand-400 text-xs block">{business.phones.secondary_label}</span>
+            <a href={`tel:${business.phones.secondary}`} class="hover:text-white transition-colors font-medium">
+              {business.phones.secondary_display}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${business.email}`} class="hover:text-white transition-colors">
+              {business.email}
+            </a>
+          </li>
+        </ul>
+        <p class="text-xs text-brand-400 mt-3">{business.businessHours}</p>
+      </div>
+
+      <!-- Column 3: Service area -->
+      <div>
+        <p class="text-white font-semibold text-sm mb-3">Service Area</p>
+        <p class="text-sm mb-2">All {business.countiesServed} Florida counties from two offices:</p>
+        <ul class="text-sm space-y-1">
+          {business.offices.map(o => (
+            <li>📍 <span class="text-white">{o.city}</span> — {o.region}</li>
+          ))}
+        </ul>
+        <p class="text-xs text-brand-400 mt-3">English · Español</p>
+      </div>
+    </div>
+
+    <div class="border-t border-brand-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-brand-400">
+      <p>© {new Date().getFullYear()} {business.legalName}. All rights reserved.</p>
+      <p>
+        <a href="/privacy" class="hover:text-brand-200 transition-colors">Privacy Policy</a>
+        <span class="mx-2">·</span>
+        License RZ3108
+      </p>
+    </div>
+  </div>
+</footer>

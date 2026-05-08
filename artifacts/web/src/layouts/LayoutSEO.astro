@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import HeaderSEO from '../components/HeaderSEO.astro';
+import FooterSEO from '../components/FooterSEO.astro';
+import PhoneButton from '../components/PhoneButton.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/og/og-home.jpg',
+  schema,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`https://commercialappraiserfl.com${ogImage}`} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Appraisers of America" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`https://commercialappraiserfl.com${ogImage}`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Schema JSON-LD -->
+  {schema && (
+    <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(schema) ? schema : [schema])} />
+  )}
+
+  <!-- GTM placeholder — replace GTM-XXXXXXX with real ID -->
+  <script is:inline>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');
+  </script>
+
+  <!-- Phone click + FAQ tracking -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Click-to-call tracking
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({ event: 'phone_click', phone: a.getAttribute('href').replace('tel:', '') });
+        });
+      });
+      // FAQ open tracking
+      document.querySelectorAll('details summary').forEach(function(s, i) {
+        s.addEventListener('click', function() {
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({ event: 'faq_open', position: i });
+        });
+      });
+    });
+  </script>
+</head>
+<body class="bg-surface-white text-ink-800">
+  <!-- GTM noscript -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <HeaderSEO />
+  <main>
+    <slot />
+  </main>
+  <FooterSEO />
+  <PhoneButton />
+</body>
+</html>

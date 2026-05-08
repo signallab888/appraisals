@@ -1,0 +1,76 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const rows = [
+  { type: 'Multifamily 2–4 units',                          range: '$700 – $1,500' },
+  { type: 'Standard commercial (office, retail, small industrial)', range: '$2,500 – $5,000' },
+  { type: 'Hotels, motels, going concern',                   range: '$5,000 – $10,000+' },
+  { type: 'Special purpose (church, marina, mobile home park)', range: '$5,000 – $15,000+' },
+  { type: 'Narrative / litigation reports',                  range: '$5,000 – $12,000' },
+];
+
+const addons = [
+  { label: 'Rush delivery (under 7 days)', value: '+$500 – $2,000' },
+  { label: 'Rental analysis', value: '+$300 – $750' },
+];
+---
+
+<section class={`${compact ? 'py-10' : 'py-16'} bg-white`} id="pricing">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    {!compact ? (
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-ink-800 tracking-tight">
+          How Much Does a Commercial Appraisal Cost in Florida?
+        </h2>
+        <p class="text-ink-500 mt-3">Real ranges. No hidden fees. Exact quote in 2 hours.</p>
+      </div>
+    ) : (
+      <h3 class="text-xl font-semibold text-ink-800 mb-6 tracking-tight">
+        Typical Commercial Appraisal Fees in Florida
+      </h3>
+    )}
+
+    <div class="overflow-hidden rounded-lg border border-surface-border shadow-sm">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand-700 text-white">
+            <th class="text-left px-5 py-3 font-semibold">Property Type</th>
+            <th class="text-right px-5 py-3 font-semibold">Typical Fee Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-surface-soft'}>
+              <td class="px-5 py-3.5 text-ink-700">{r.type}</td>
+              <td class="px-5 py-3.5 text-ink-800 font-medium text-right whitespace-nowrap">{r.range}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {!compact && (
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {addons.map(a => (
+          <div class="flex justify-between items-center bg-surface-soft rounded-md px-4 py-3 text-sm border border-surface-line">
+            <span class="text-ink-600">{a.label}</span>
+            <span class="font-medium text-ink-800">{a.value}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="mt-8 text-center">
+      <a
+        href="#quote"
+        class="inline-block bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-8 py-3.5 transition-colors"
+      >
+        Get Your Exact Quote
+      </a>
+      <p class="text-ink-400 text-xs mt-2">Typical response in 2 business hours</p>
+    </div>
+  </div>
+</section>

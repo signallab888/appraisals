@@ -1,0 +1,23 @@
+---
+const badges = [
+  { value: '20+',   label: 'Years in Florida' },
+  { value: 'RZ3108', label: 'State Certified' },
+  { value: 'MAI',   label: 'Supported Reports' },
+  { value: 'USPAP', label: 'Compliant' },
+  { value: 'EN/ES', label: 'Bilingual Service' },
+  { value: '67',    label: 'Counties Served' },
+];
+---
+
+<div class="bg-brand-800 border-b border-brand-600">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+      {badges.map(b => (
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-white font-bold">{b.value}</span>
+          <span class="text-brand-300">{b.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

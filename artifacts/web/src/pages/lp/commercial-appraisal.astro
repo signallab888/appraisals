@@ -1,0 +1,92 @@
+---
+import LayoutLP from '../../layouts/LayoutLP.astro';
+import HeroLP from '../../components/HeroLP.astro';
+import CityPills from '../../components/CityPills.astro';
+import WhoWeServe from '../../components/WhoWeServe.astro';
+import PropertyTypeGrid from '../../components/PropertyTypeGrid.astro';
+import PricingTable from '../../components/PricingTable.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+import FAQ from '../../components/FAQ.astro';
+import faqs from '../../data/faqs-lp.json';
+import regionsData from '../../data/regions.json';
+import business from '../../data/business.json';
+import { detectRegion } from '../../lib/geo';
+import { buildLocalServiceSchema, buildFaqSchema } from '../../lib/schema';
+
+// Detect region from URL params only (static mode — CF headers not available at build time)
+const region = regionsData[detectRegion(Astro.url, new Headers())];
+
+const phoneDisplay = region.phone === 'primary'
+  ? business.phones.primary_display
+  : business.phones.secondary_display;
+
+const phoneTel = region.phone === 'primary'
+  ? business.phones.primary
+  : business.phones.secondary;
+
+const serviceSchema = buildLocalServiceSchema(region.label, phoneTel);
+const faqSchema = buildFaqSchema(faqs);
+
+const pageTitle = `Commercial Appraiser in ${region.label} | Free Quote in 2 Hours`;
+const pageDesc = `${region.subtitle} Jorge V. Canellas, RZ3108. USPAP compliant, SBA-ready. Free quote within 2 business hours.`;
+---
+
+<LayoutLP
+  title={pageTitle}
+  description={pageDesc}
+  schema={[serviceSchema, faqSchema]}
+>
+  <HeroLP
+    h1={region.h1}
+    subtitle={region.subtitle}
+    officeLine={region.officeLine}
+    phone={region.phone as 'primary' | 'secondary'}
+  />
+
+  <CityPills cities={region.cities} regionLabel={region.label} />
+
+  <!-- Who We Serve compact -->
+  <section class="py-10 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { title: 'Banks & Lenders', body: 'SBA, refinance, OREO, FIRREA-compliant reports.' },
+          { title: 'Attorneys & CPAs', body: 'Divorce, estate, tax appeal, expert witness.' },
+          { title: 'Property Owners', body: 'Due diligence, refinance, 1031, partnership buyout.' },
+        ].map(c => (
+          <div class="bg-surface-soft rounded-lg p-4 border border-surface-line">
+            <p class="font-semibold text-brand-700 text-sm">{c.title}</p>
+            <p class="text-ink-600 text-sm mt-1">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PropertyTypeGrid compact={true} />
+  <PricingTable compact={true} />
+  <ProcessTimeline compact={true} />
+  <FAQ data={faqs} heading="Quick Answers" />
+
+  <!-- LP Footer CTA -->
+  <section class="py-10 bg-brand-700 text-white text-center">
+    <div class="max-w-xl mx-auto px-4">
+      <p class="text-lg font-semibold mb-2">Ready for your quote?</p>
+      <p class="text-brand-200 text-sm mb-6">{region.officeLine} · Response in 2 business hours.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="#quote"
+          class="bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-7 py-3 transition-colors"
+        >
+          Get a Free Quote
+        </a>
+        <a
+          href={`tel:${phoneTel}`}
+          class="border border-white text-white hover:bg-white hover:text-brand-700 font-medium rounded-md px-7 py-3 transition-colors"
+        >
+          Call {phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+</LayoutLP>
