@@ -40,32 +40,38 @@ const points = [
 
       <!-- Left: photo -->
       <div class="relative">
+        <!-- Floating credential badge -->
+        <div class="absolute -top-4 -right-4 z-20 bg-cta-600 text-white rounded-2xl px-5 py-3 shadow-xl shadow-cta-700/40 text-center">
+          <p class="font-black text-2xl leading-none">{business.yearsExperience}</p>
+          <p class="text-xs font-semibold mt-1 text-cta-100">Years in FL</p>
+        </div>
+
         <div class="rounded-2xl overflow-hidden shadow-2xl shadow-brand-950/50">
-          <div class="relative h-[480px] lg:h-[560px] overflow-hidden">
+          <!-- Photo + overlay all inside one relative container -->
+          <div class="relative h-[420px] sm:h-[480px] lg:h-[560px]">
             <Image
               src={appraiserPhoto}
               alt="Jorge V. Canellas, State Certified General Appraiser"
               width={600}
               height={800}
               class="absolute inset-0 w-full h-auto"
-              style="top: -140px;"
+              style="top: -80px;"
             />
-          </div>
-          <!-- Overlay name card -->
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-900/95 to-transparent px-6 pb-6 pt-14">
-            <p class="text-white font-bold text-lg leading-tight">Jorge V. Canellas</p>
-            <p class="text-brand-300 text-sm mt-1">{business.primaryAppraiser.license} · State Certified General</p>
-            <div class="flex flex-wrap gap-2 mt-3">
-              {business.compliance.slice(0, 3).map(c => (
-                <span class="bg-white/15 border border-white/20 text-white rounded-full px-3 py-1 text-xs font-semibold">{c}</span>
-              ))}
+
+            <!-- Dark gradient overlay — contained inside the rounded card -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/60 to-transparent" />
+
+            <!-- Name card at the bottom, also inside the relative container -->
+            <div class="absolute bottom-0 left-0 right-0 px-6 pb-6">
+              <p class="text-white font-bold text-lg leading-tight drop-shadow-lg">Jorge V. Canellas</p>
+              <p class="text-brand-200 text-sm mt-1 drop-shadow">{business.primaryAppraiser.license} · State Certified General</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                {business.compliance.slice(0, 3).map(c => (
+                  <span class="bg-white/20 border border-white/30 text-white rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm">{c}</span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Floating credential badge -->
-        <div class="absolute -top-4 -right-4 bg-cta-600 text-white rounded-2xl px-5 py-3 shadow-xl shadow-cta-700/40 text-center">
-          <p class="font-black text-2xl leading-none">{business.yearsExperience}</p>
-          <p class="text-xs font-semibold mt-1 text-cta-100">Years in FL</p>
         </div>
       </div>
 
@@ -99,7 +105,7 @@ const points = [
         <div class="mt-10">
           <a
             href="#quote"
-            class="inline-block bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-xl px-8 py-4 transition-all duration-200 shadow-lg shadow-cta-700/30 hover:shadow-xl hover:-translate-y-0.5 text-sm"
+            class="block sm:inline-block w-full sm:w-auto text-center bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-xl px-8 py-4 transition-all duration-200 shadow-lg shadow-cta-700/30 hover:shadow-xl hover:-translate-y-0.5 text-sm"
           >
             Get Your Free Quote →
           </a>
