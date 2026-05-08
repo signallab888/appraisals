@@ -62,26 +62,20 @@ import business from '../data/business.json';
         </div>
 
         <!-- Quick trust stats -->
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-brand-300">
-          <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            {business.yearsExperience} Years
-          </span>
-          <span class="text-brand-600">·</span>
-          <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            {business.countiesServed} Counties
-          </span>
-          <span class="text-brand-600">·</span>
-          <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            FIRREA & USPAP
-          </span>
-          <span class="text-brand-600">·</span>
-          <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            English · Español
-          </span>
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-6 gap-y-2.5 text-sm text-brand-300">
+          {[
+            `${business.yearsExperience} Years`,
+            `${business.countiesServed} Counties`,
+            'FIRREA & USPAP',
+            'English · Español',
+          ].map(item => (
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              {item}
+            </span>
+          ))}
         </div>
       </div>
 
