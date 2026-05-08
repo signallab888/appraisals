@@ -1,25 +1,25 @@
 ---
-import { Image } from 'astro:assets';
-import heroImage from '../assets/hero/hero-orlando-skyline.jpg';
 import QuoteForm from './QuoteForm.astro';
 import business from '../data/business.json';
 ---
 
 <section class="relative min-h-[92vh] flex items-center overflow-hidden bg-brand-900">
-  <!-- Full-bleed background image -->
-  <Image
-    src={heroImage}
-    alt="Orlando commercial skyline"
-    loading="eager"
-    fetchpriority="high"
-    width={1600}
-    height={900}
+  <!-- Video background -->
+  <video
     class="absolute inset-0 w-full h-full object-cover"
-  />
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  >
+    <source src="/hero-bg.mp4" type="video/mp4" />
+  </video>
 
   <!-- Layered gradient: dark on left, lighter on right -->
-  <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/80 to-brand-900/50" />
-  <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent" />
+  <div class="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/70 to-brand-900/40" />
+  <div class="absolute inset-0 bg-gradient-to-t from-brand-900/70 via-transparent to-transparent" />
 
   <!-- Content -->
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
