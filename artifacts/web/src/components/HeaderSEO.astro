@@ -4,6 +4,7 @@ import business from '../data/business.json';
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-ink-900/8 shadow-sm shadow-ink-900/5">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
     <!-- Logo -->
     <a href="/" class="flex-shrink-0" aria-label="Appraisers of America — Home">
       <img
@@ -17,25 +18,24 @@ import business from '../data/business.json';
       />
     </a>
 
-    <!-- Nav links -->
+    <!-- Desktop nav links -->
     <div class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-600 tracking-wide">
-      <a href="/#services"  class="hover:text-brand-700 transition-colors">Services</a>
-      <a href="/#coverage"  class="hover:text-brand-700 transition-colors">Coverage</a>
-      <a href="/#faq"       class="hover:text-brand-700 transition-colors">FAQ</a>
+      <a href="/#services" class="hover:text-brand-700 transition-colors">Services</a>
+      <a href="/#coverage" class="hover:text-brand-700 transition-colors">Coverage</a>
+      <a href="/#faq"      class="hover:text-brand-700 transition-colors">FAQ</a>
     </div>
 
-    <!-- Right side: phone + CTA -->
-    <div class="flex items-center gap-4">
+    <!-- Desktop right side: phone + CTA -->
+    <div class="hidden md:flex items-center gap-4">
       <a
         href={`tel:${business.phones.primary}`}
-        class="hidden md:flex items-center gap-2 text-sm font-semibold text-ink-800 hover:text-brand-700 transition-colors"
+        class="flex items-center gap-2 text-sm font-semibold text-ink-800 hover:text-brand-700 transition-colors"
       >
         <svg class="w-4 h-4 text-cta-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
         </svg>
         {business.phones.primary_display}
       </a>
-
       <a
         href="/#quote"
         class="bg-cta-600 hover:bg-cta-500 text-white font-semibold rounded-lg px-5 py-2.5 text-sm transition-all duration-200 flex-shrink-0 shadow-md shadow-cta-700/25 hover:-translate-y-0.5 hover:shadow-lg"
@@ -43,5 +43,85 @@ import business from '../data/business.json';
         Get a Free Quote
       </a>
     </div>
+
+    <!-- Mobile hamburger button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-ink-700 hover:bg-surface-soft transition-colors"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <!-- Hamburger icon -->
+      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <!-- Close icon (hidden by default) -->
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
   </nav>
+
+  <!-- Mobile drawer -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-surface-line bg-white"
+  >
+    <div class="px-4 py-5 flex flex-col gap-1">
+      <a href="/#services" class="mobile-nav-link px-4 py-3 rounded-lg text-base font-medium text-ink-700 hover:bg-surface-soft hover:text-brand-700 transition-colors">Services</a>
+      <a href="/#coverage" class="mobile-nav-link px-4 py-3 rounded-lg text-base font-medium text-ink-700 hover:bg-surface-soft hover:text-brand-700 transition-colors">Coverage</a>
+      <a href="/#faq"      class="mobile-nav-link px-4 py-3 rounded-lg text-base font-medium text-ink-700 hover:bg-surface-soft hover:text-brand-700 transition-colors">FAQ</a>
+      <a href="/privacy"   class="mobile-nav-link px-4 py-3 rounded-lg text-base font-medium text-ink-700 hover:bg-surface-soft hover:text-brand-700 transition-colors">Privacy Policy</a>
+
+      <div class="mt-3 pt-4 border-t border-surface-line flex flex-col gap-3">
+        <a
+          href={`tel:${business.phones.primary}`}
+          class="flex items-center justify-center gap-2 rounded-lg border border-surface-border px-4 py-3 text-sm font-semibold text-ink-800 hover:bg-surface-soft transition-colors"
+        >
+          <svg class="w-4 h-4 text-cta-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          {business.phones.primary_display}
+        </a>
+        <a
+          href="/#quote"
+          class="mobile-nav-link block text-center bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-lg px-4 py-3.5 text-sm transition-all duration-200 shadow-md shadow-cta-700/25"
+        >
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  function openMenu() {
+    menu!.classList.remove('hidden');
+    iconOpen!.classList.add('hidden');
+    iconClose!.classList.remove('hidden');
+    btn!.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    menu!.classList.add('hidden');
+    iconOpen!.classList.remove('hidden');
+    iconClose!.classList.add('hidden');
+    btn!.setAttribute('aria-expanded', 'false');
+  }
+
+  btn?.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // Close when any nav link is tapped
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
