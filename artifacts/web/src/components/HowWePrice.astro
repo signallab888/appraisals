@@ -42,11 +42,12 @@ const factors = [
       </p>
     </div>
 
-    <!-- Factors grid -->
+    <!-- 3×2 grid: 5 factor cards + 1 CTA card -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
       {factors.map((f, i) => (
-        <div class={`relative rounded-2xl border border-surface-border bg-surface-soft p-7 flex flex-col gap-4 transition-shadow hover:shadow-lg${i === 4 ? ' lg:col-start-2' : ''}`}>
-          <!-- Number badge -->
+        <div class="relative rounded-2xl border border-surface-border bg-surface-soft p-7 flex flex-col gap-4 transition-shadow hover:shadow-lg">
+          <!-- Number watermark -->
           <div class="absolute top-5 right-6 text-5xl font-black text-brand-700/10 select-none leading-none">
             {i + 1}
           </div>
@@ -61,19 +62,28 @@ const factors = [
           </div>
         </div>
       ))}
-    </div>
 
-    <!-- CTA nudge -->
-    <div class="mt-12 text-center rounded-2xl border border-brand-700/20 bg-brand-700/5 px-8 py-8">
-      <p class="text-ink-700 font-semibold text-lg mb-1">Ready to get your quote?</p>
-      <p class="text-ink-500 text-sm mb-5">We review your property details and respond within 2 hours — no commitment required.</p>
-      <a
-        href="#quote"
-        class="inline-block bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-lg px-8 py-3.5 text-sm transition-all duration-200 shadow-md shadow-cta-700/30 hover:shadow-lg hover:-translate-y-0.5"
-      >
-        Request a Free Quote →
-      </a>
-    </div>
+      <!-- 6th card: CTA — dark navy, same size -->
+      <div class="relative rounded-2xl p-7 flex flex-col justify-between gap-6 overflow-hidden" style="background-color:#1a365d;">
+        <!-- Decorative ring -->
+        <div class="absolute -top-8 -right-8 w-36 h-36 rounded-full opacity-10" style="background-color:#fff;"></div>
 
+        <div>
+          <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-3">Get Started</p>
+          <h3 class="text-white text-xl font-bold leading-snug mb-3">Ready to get your quote?</h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            We review your property details and respond within 2 hours — no commitment required.
+          </p>
+        </div>
+
+        <a
+          href="#quote"
+          class="inline-flex items-center justify-center gap-2 bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-lg px-6 py-3.5 text-sm transition-all duration-200 shadow-lg shadow-black/30 hover:-translate-y-0.5"
+        >
+          Request a Free Quote →
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
