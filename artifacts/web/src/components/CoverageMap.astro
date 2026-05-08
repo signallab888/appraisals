@@ -2,47 +2,62 @@
 const regions = [
   {
     label: 'Central Florida',
-    dot: 'bg-brand-500',
-    border: 'border-l-brand-500',
+    dotClass: 'bg-brand-500',
+    borderStyle: 'border-left-color: #3568a6',
     cities: ['Orlando', 'Tampa', 'Lakeland', 'Kissimmee', 'Sanford', 'Lake Mary',
              'Winter Park', 'Ocala', 'Daytona Beach', 'Melbourne', 'Clermont'],
   },
   {
     label: 'South Florida',
-    dot: 'bg-cta-600',
-    border: 'border-l-cta-600',
+    dotClass: 'bg-cta-600',
+    borderStyle: 'border-left-color: #8B2035',
     cities: ['Miami', 'Fort Lauderdale', 'West Palm Beach', 'Boca Raton',
              'Hialeah', 'Doral', 'Coral Gables', 'Naples', 'Fort Myers', 'Cape Coral'],
   },
   {
     label: 'North Florida',
-    dot: 'bg-brand-700',
-    border: 'border-l-brand-700',
+    dotClass: 'bg-brand-700',
+    borderStyle: 'border-left-color: #1a365d',
     cities: ['Jacksonville', 'Gainesville', 'Tallahassee', 'Pensacola', 'St. Augustine'],
   },
 ];
+
+const stats = [
+  { n: '67', label: 'Counties Covered' },
+  { n: '2',  label: 'Florida Offices' },
+  { n: '20+', label: 'Years Experience' },
+  { n: '2 hrs', label: 'Quote Response' },
+];
 ---
 
-<section class="py-20 bg-brand-50" id="coverage">
+<section class="py-24 bg-brand-50" id="coverage">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-      <!-- Left: Florida state shape -->
-      <div class="flex justify-center lg:justify-start">
-        <div class="relative flex flex-col items-center">
-          <img
-            src="/florida-state-simple.svg"
-            alt="Florida state coverage map"
-            width="420"
-            height="420"
-            class="w-56 sm:w-72 lg:w-80 h-auto"
-            loading="lazy"
-          />
+      <!-- Left: Florida map + stats grid -->
+      <div class="flex flex-col items-center lg:items-start gap-10">
+        <img
+          src="/florida-state-simple.svg"
+          alt="Florida state coverage map"
+          width="480"
+          height="480"
+          class="w-72 sm:w-88 lg:w-full max-w-sm h-auto mx-auto lg:mx-0"
+          loading="lazy"
+        />
+
+        <!-- Stats 2×2 grid under map -->
+        <div class="grid grid-cols-2 gap-4 w-full max-w-sm mx-auto lg:mx-0">
+          {stats.map(s => (
+            <div class="bg-white border border-surface-line rounded-2xl p-5 text-center shadow-sm">
+              <p class="text-3xl font-black text-brand-900 mb-1">{s.n}</p>
+              <p class="text-ink-500 text-sm">{s.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      <!-- Right: content -->
+      <!-- Right: heading + region cards -->
       <div>
         <div class="flex items-center gap-3 mb-5">
           <div class="h-px w-10 bg-cta-600" />
@@ -58,9 +73,12 @@ const regions = [
 
         <div class="space-y-4">
           {regions.map(r => (
-            <div class={`bg-white border border-surface-line border-l-4 ${r.border} rounded-xl p-5 hover:shadow-md transition-shadow duration-300`}>
+            <div
+              class="bg-white border border-surface-line border-l-4 rounded-xl p-5 hover:shadow-md transition-shadow duration-300"
+              style={r.borderStyle}
+            >
               <div class="flex items-center gap-2.5 mb-3">
-                <div class={`w-2.5 h-2.5 rounded-full ${r.dot} flex-shrink-0`} />
+                <div class={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${r.dotClass}`} />
                 <h3 class="text-brand-900 font-bold text-sm">{r.label}</h3>
               </div>
               <div class="flex flex-wrap gap-2">
@@ -76,19 +94,5 @@ const regions = [
       </div>
     </div>
 
-    <!-- Bottom stat bar -->
-    <div class="mt-14 pt-10 border-t border-surface-line grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      {[
-        { n: '67', label: 'Counties Covered' },
-        { n: '2',  label: 'Florida Offices' },
-        { n: '20+', label: 'Years Experience' },
-        { n: '2 hrs', label: 'Quote Response' },
-      ].map(s => (
-        <div>
-          <p class="text-3xl font-black text-brand-900 mb-1">{s.n}</p>
-          <p class="text-ink-500 text-sm">{s.label}</p>
-        </div>
-      ))}
-    </div>
   </div>
 </section>
