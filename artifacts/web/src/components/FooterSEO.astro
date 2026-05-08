@@ -2,62 +2,86 @@
 import business from '../data/business.json';
 ---
 
-<footer class="bg-brand-900 text-brand-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer class="bg-brand-950 text-brand-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
 
-      <!-- Column 1: Identity -->
-      <div>
-        <p class="text-white font-semibold text-base mb-2">{business.legalName}</p>
-        <p class="text-sm mb-4">State Certified General Real Estate Appraiser<br />License RZ3108 — Jorge V. Canellas</p>
-        <p class="text-xs text-brand-400">USPAP Compliant · FIRREA Compliant<br />SBA 504/7(a) Ready · MAI-Supported Reports</p>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+      <!-- Column 1: Brand -->
+      <div class="md:col-span-4">
+        <img src="/logo.svg" alt="Appraisers of America" width="140" height="40" class="h-10 w-auto mb-4 brightness-0 invert opacity-90" />
+        <p class="text-sm text-brand-300 leading-relaxed mb-4 max-w-xs">
+          Florida's trusted commercial real estate appraisers for banks, attorneys, and property owners since 2004.
+        </p>
+        <div class="flex items-center gap-2 mt-5">
+          <span class="inline-flex items-center gap-1.5 text-xs text-brand-400 border border-brand-700 rounded-full px-3 py-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
+            USPAP Compliant
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs text-brand-400 border border-brand-700 rounded-full px-3 py-1">
+            License RZ3108
+          </span>
+        </div>
       </div>
 
-      <!-- Column 2: Contact -->
-      <div>
-        <p class="text-white font-semibold text-sm mb-3">Contact</p>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <span class="text-brand-400 text-xs block">{business.phones.primary_label}</span>
-            <a href={`tel:${business.phones.primary}`} class="hover:text-white transition-colors font-medium">
-              {business.phones.primary_display}
-            </a>
-          </li>
-          <li>
-            <span class="text-brand-400 text-xs block">{business.phones.secondary_label}</span>
-            <a href={`tel:${business.phones.secondary}`} class="hover:text-white transition-colors font-medium">
-              {business.phones.secondary_display}
-            </a>
-          </li>
-          <li>
-            <a href={`mailto:${business.email}`} class="hover:text-white transition-colors">
-              {business.email}
-            </a>
-          </li>
+      <!-- Column 2: Navigation -->
+      <div class="md:col-span-3">
+        <p class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Navigate</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/#services"  class="hover:text-white transition-colors">Services</a></li>
+          <li><a href="/#coverage"  class="hover:text-white transition-colors">Coverage</a></li>
+          <li><a href="/#pricing"   class="hover:text-white transition-colors">Pricing</a></li>
+          <li><a href="/#faq"       class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="/#quote"     class="hover:text-white transition-colors">Get a Quote</a></li>
         </ul>
-        <p class="text-xs text-brand-400 mt-3">{business.businessHours}</p>
       </div>
 
-      <!-- Column 3: Service area -->
-      <div>
-        <p class="text-white font-semibold text-sm mb-3">Service Area</p>
-        <p class="text-sm mb-2">All {business.countiesServed} Florida counties from two offices:</p>
-        <ul class="text-sm space-y-1">
-          {business.offices.map(o => (
-            <li>📍 <span class="text-white">{o.city}</span> — {o.region}</li>
-          ))}
-        </ul>
-        <p class="text-xs text-brand-400 mt-3">English · Español</p>
+      <!-- Column 3: Contact -->
+      <div class="md:col-span-5">
+        <p class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Contact Us</p>
+        <a
+          href={`tel:${business.phones.primary}`}
+          class="flex items-center gap-3 group mb-4"
+        >
+          <span class="w-9 h-9 rounded-full bg-cta-600/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cta-600/40 transition-colors">
+            <svg class="w-4 h-4 text-cta-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+          </span>
+          <span>
+            <span class="block text-xs text-brand-400 mb-0.5">Call us directly</span>
+            <span class="text-white font-semibold text-base group-hover:text-brand-100 transition-colors">{business.phones.primary_display}</span>
+          </span>
+        </a>
+        <a
+          href={`mailto:${business.email}`}
+          class="flex items-center gap-3 group mb-5"
+        >
+          <span class="w-9 h-9 rounded-full bg-brand-800 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-700 transition-colors">
+            <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+          </span>
+          <span>
+            <span class="block text-xs text-brand-400 mb-0.5">Email us</span>
+            <span class="text-brand-200 text-sm group-hover:text-white transition-colors">{business.email}</span>
+          </span>
+        </a>
+        <p class="text-xs text-brand-500">{business.businessHours}</p>
+        <p class="text-xs text-brand-500 mt-1">English · Español</p>
       </div>
     </div>
 
-    <div class="border-t border-brand-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-brand-400">
+    <!-- Bottom bar -->
+    <div class="border-t border-brand-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-brand-500">
       <p>© {new Date().getFullYear()} {business.legalName}. All rights reserved.</p>
-      <p>
-        <a href="/privacy" class="hover:text-brand-200 transition-colors">Privacy Policy</a>
-        <span class="mx-2">·</span>
-        License RZ3108
-      </p>
+      <div class="flex items-center gap-4">
+        <a href="/privacy" class="hover:text-brand-300 transition-colors">Privacy Policy</a>
+        <span class="text-brand-700">·</span>
+        <span>License RZ3108 — Jorge V. Canellas</span>
+      </div>
     </div>
+
   </div>
 </footer>
