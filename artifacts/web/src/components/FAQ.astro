@@ -26,9 +26,9 @@ const { data, heading = 'Frequently Asked Questions' } = Astro.props;
       {heading}
     </h2>
 
-    <div class="space-y-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       {data.map((item, i) => (
-        <details class="group bg-white border border-surface-border rounded-xl overflow-hidden hover:border-brand-200 transition-colors">
+        <details class="group bg-white border border-surface-border rounded-xl overflow-hidden hover:border-brand-200 transition-colors self-start">
           <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none gap-4">
             <h3 class="text-sm font-semibold text-ink-800 text-left group-open:text-brand-700 transition-colors">{item.q}</h3>
             <div class="w-7 h-7 rounded-full border border-surface-border flex items-center justify-center flex-shrink-0 group-open:bg-brand-700 group-open:border-brand-700 transition-all duration-200">
