@@ -1,11 +1,25 @@
 ---
 import QuoteForm from './QuoteForm.astro';
 import business from '../data/business.json';
+import { Image } from 'astro:assets';
+import heroBg from '../assets/hero/hero-orlando-skyline.jpg';
 ---
 
-<section class="py-20 bg-brand-900 text-white relative overflow-hidden" id="contact">
-  <!-- Subtle background gradient -->
-  <div class="absolute inset-0 opacity-10" style="background: radial-gradient(ellipse at 20% 50%, #3568a6 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, #ea580c 0%, transparent 55%);" />
+<section class="py-20 text-white relative overflow-hidden" id="contact">
+  <!-- Hero photo background -->
+  <Image
+    src={heroBg}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    aria-hidden="true"
+    widths={[800, 1280, 1920]}
+    sizes="100vw"
+    loading="lazy"
+  />
+  <!-- Dark overlay so text stays readable -->
+  <div class="absolute inset-0 bg-brand-950/85" />
+  <!-- Subtle color accent -->
+  <div class="absolute inset-0 opacity-15" style="background: radial-gradient(ellipse at 20% 50%, #3568a6 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, #ea580c 0%, transparent 55%);" />
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
