@@ -3,19 +3,18 @@ import business from '../data/business.json';
 ---
 
 <!-- App-style fixed bottom action bar — mobile only -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 flex" style="box-shadow: 0 -4px 24px rgba(8,15,30,0.45);">
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 flex border-t border-white/10" style="box-shadow: 0 -4px 24px rgba(8,15,30,0.45);">
 
   <!-- Get Quote — left, burgundy -->
   <a
     href="#quote"
-    class="flex-1 flex flex-col items-center justify-center gap-0.5 bg-cta-600 active:bg-cta-700 text-white py-3.5 transition-colors"
+    class="flex-1 flex items-center justify-center gap-2 bg-cta-600 active:bg-cta-700 text-white font-semibold text-sm py-4 transition-colors"
     aria-label="Get a free quote"
   >
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
     </svg>
-    <span class="text-[10px] font-medium text-cta-200 leading-none">Free · 2 hrs</span>
-    <span class="text-sm font-bold leading-tight">Get a Quote</span>
+    Get Free Quote
   </a>
 
   <!-- Divider -->
@@ -24,14 +23,13 @@ import business from '../data/business.json';
   <!-- Call — right, dark navy -->
   <a
     href={`tel:${business.phones.primary}`}
-    class="flex-1 flex flex-col items-center justify-center gap-0.5 bg-brand-900 active:bg-brand-800 text-white py-3.5 transition-colors"
+    class="flex-1 flex items-center justify-center gap-2 bg-brand-900 active:bg-brand-800 text-white font-semibold text-sm py-4 transition-colors"
     aria-label="Call us"
   >
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+    <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
     </svg>
-    <span class="text-[10px] font-medium text-brand-400 leading-none">Tap to call</span>
-    <span class="text-sm font-bold leading-tight">{business.phones.primary_display}</span>
+    {business.phones.primary_display}
   </a>
 
 </div>
