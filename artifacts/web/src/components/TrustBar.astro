@@ -1,22 +1,29 @@
 ---
 const badges = [
-  { value: '20+',   label: 'Years in Florida' },
-  { value: 'RZ3108', label: 'State Certified' },
-  { value: 'MAI',   label: 'Supported Reports' },
-  { value: 'USPAP', label: 'Compliant' },
-  { value: 'EN/ES', label: 'Bilingual Service' },
-  { value: '67',    label: 'Counties Served' },
+  { value: '20+',    label: 'Years in Florida',    icon: '⭐' },
+  { value: 'RZ3108', label: 'State Certified',      icon: '🏛' },
+  { value: 'MAI',    label: 'Supported Reports',    icon: '📋' },
+  { value: 'USPAP',  label: 'Compliant',            icon: '✓' },
+  { value: 'EN/ES',  label: 'Bilingual',            icon: '🌐' },
+  { value: '67',     label: 'Counties Served',      icon: '📍' },
 ];
 ---
 
-<div class="bg-brand-800 border-b border-brand-600">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
-      {badges.map(b => (
-        <div class="flex items-center gap-2 text-sm">
-          <span class="text-white font-bold">{b.value}</span>
-          <span class="text-brand-300">{b.label}</span>
-        </div>
+<div class="bg-brand-800/90 backdrop-blur-sm border-y border-brand-600/40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+    <div class="flex flex-wrap justify-center items-center gap-x-0 gap-y-4">
+      {badges.map((b, i) => (
+        <>
+          <div class="flex items-center gap-2.5 px-6 group">
+            <div class="flex flex-col items-center">
+              <span class="text-white font-extrabold text-lg leading-none tracking-tight">{b.value}</span>
+              <span class="text-brand-400 text-xs mt-0.5 whitespace-nowrap">{b.label}</span>
+            </div>
+          </div>
+          {i < badges.length - 1 && (
+            <div class="w-px h-8 bg-brand-600/60 self-center" />
+          )}
+        </>
       ))}
     </div>
   </div>

@@ -2,16 +2,18 @@
 import business from '../data/business.json';
 ---
 
-<header class="sticky top-0 z-50 bg-brand-700 shadow-md">
+<header class="sticky top-0 z-50 bg-brand-900/95 backdrop-blur-md border-b border-white/8">
   <!-- Top bar: phone numbers -->
-  <div class="bg-brand-900 text-brand-200 text-xs py-1.5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center md:justify-end gap-4">
-      <a href={`tel:${business.phones.primary}`} class="hover:text-white transition-colors">
-        {business.phones.primary_label}: <strong class="text-white">{business.phones.primary_display}</strong>
+  <div class="bg-brand-900 border-b border-white/6 text-xs py-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center md:justify-end gap-5">
+      <a href={`tel:${business.phones.primary}`} class="text-brand-300 hover:text-white transition-colors flex items-center gap-1.5">
+        <svg class="w-3 h-3 text-cta-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        {business.phones.primary_label}: <strong class="text-white ml-0.5">{business.phones.primary_display}</strong>
       </a>
-      <span class="hidden md:inline text-brand-600">|</span>
-      <a href={`tel:${business.phones.secondary}`} class="hover:text-white transition-colors">
-        {business.phones.secondary_label}: <strong class="text-white">{business.phones.secondary_display}</strong>
+      <span class="hidden md:inline text-brand-700">|</span>
+      <a href={`tel:${business.phones.secondary}`} class="text-brand-300 hover:text-white transition-colors flex items-center gap-1.5">
+        <svg class="w-3 h-3 text-cta-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        {business.phones.secondary_label}: <strong class="text-white ml-0.5">{business.phones.secondary_display}</strong>
       </a>
     </div>
   </div>
@@ -19,30 +21,30 @@ import business from '../data/business.json';
   <!-- Main nav -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
     <!-- Logo -->
-    <a href="/" class="flex-shrink-0" aria-label="Appraisers of America — Home">
+    <a href="/" class="flex-shrink-0 group" aria-label="Appraisers of America — Home">
       <img
         src="/logo.svg"
         alt="Appraisers of America"
-        width="180"
-        height="48"
+        width="160"
+        height="44"
         loading="eager"
         fetchpriority="high"
-        class="h-10 w-auto"
+        class="h-12 w-auto"
       />
     </a>
 
-    <!-- Nav links (desktop) -->
-    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-brand-200">
-      <a href="/#services" class="hover:text-white transition-colors">Services</a>
-      <a href="/#coverage" class="hover:text-white transition-colors">Coverage</a>
-      <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
-      <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
+    <!-- Nav links -->
+    <div class="hidden md:flex items-center gap-7 text-sm font-semibold text-white">
+      <a href="/#services"  class="hover:text-cta-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-cta-500 hover:after:w-full after:transition-all">Services</a>
+      <a href="/#coverage"  class="hover:text-cta-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-cta-500 hover:after:w-full after:transition-all">Coverage</a>
+      <a href="/#pricing"   class="hover:text-cta-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-cta-500 hover:after:w-full after:transition-all">Pricing</a>
+      <a href="/#faq"       class="hover:text-cta-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-cta-500 hover:after:w-full after:transition-all">FAQ</a>
     </div>
 
     <!-- CTA button -->
     <a
       href="/#quote"
-      class="bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-5 py-2.5 text-sm transition-colors ml-4 flex-shrink-0"
+      class="bg-cta-600 hover:bg-cta-500 text-white font-semibold rounded-lg px-5 py-2.5 text-sm transition-all duration-200 ml-4 flex-shrink-0 shadow-md shadow-cta-700/30 hover:-translate-y-0.5 hover:shadow-lg"
     >
       Get a Free Quote
     </a>

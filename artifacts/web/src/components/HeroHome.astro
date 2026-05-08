@@ -5,69 +5,94 @@ import QuoteForm from './QuoteForm.astro';
 import business from '../data/business.json';
 ---
 
-<section class="bg-brand-700 text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<section class="relative min-h-[92vh] flex items-center overflow-hidden bg-brand-900">
+  <!-- Full-bleed background image -->
+  <Image
+    src={heroImage}
+    alt="Orlando commercial skyline"
+    loading="eager"
+    fetchpriority="high"
+    width={1600}
+    height={900}
+    class="absolute inset-0 w-full h-full object-cover"
+  />
 
-      <!-- Left: copy -->
+  <!-- Layered gradient: dark on left, lighter on right -->
+  <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/80 to-brand-900/50" />
+  <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent" />
+
+  <!-- Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Left: headline block -->
       <div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
-          Commercial Real Estate Appraiser in Florida
+        <!-- Credential pill -->
+        <div class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-xs font-semibold text-white/90 mb-7 tracking-wide uppercase">
+          <span class="w-2 h-2 rounded-full bg-cta-500 animate-pulse flex-shrink-0"></span>
+          State Certified · License RZ3108
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold text-white tracking-tighter leading-[1.05] mb-7">
+          Commercial<br />
+          Real Estate<br />
+          <span class="text-cta-400">Appraisers</span><br />
+          <span class="text-brand-200 text-4xl md:text-5xl lg:text-5xl font-semibold">in Florida</span>
         </h1>
-        <p class="text-lg md:text-xl text-brand-200 mb-8 leading-relaxed">
-          State-certified commercial appraisals for SBA loans, refinances,
-          divorce, estate, and tax appeals. {business.yearsExperience} years across all {business.countiesServed} Florida counties.
+
+        <p class="text-lg text-brand-200 leading-relaxed mb-9 max-w-md">
+          SBA loans, refinances, divorce, estate, and tax appeals.
+          {business.yearsExperience} years serving all {business.countiesServed} Florida counties.
         </p>
 
         <!-- Dual CTA -->
         <div class="flex flex-col sm:flex-row gap-3 mb-10">
           <a
             href="#quote"
-            class="bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-7 py-3.5 text-base transition-colors text-center"
+            class="bg-cta-600 hover:bg-cta-500 text-white font-semibold rounded-lg px-8 py-4 text-base transition-all duration-200 text-center shadow-lg shadow-cta-700/30 hover:shadow-xl hover:shadow-cta-700/40 hover:-translate-y-0.5"
           >
             Get a Free Quote
           </a>
           <a
             href={`tel:${business.phones.primary}`}
-            class="border border-white text-white hover:bg-white hover:text-brand-700 font-medium rounded-md px-7 py-3.5 text-base transition-colors text-center"
+            class="border-2 border-white/30 hover:border-white/70 text-white font-semibold rounded-lg px-8 py-4 text-base transition-all duration-200 text-center backdrop-blur-sm hover:bg-white/10"
           >
             Call {business.phones.primary_display}
           </a>
         </div>
 
-        <!-- Hero image — mobile visible, desktop hidden (image moves to right side) -->
-        <div class="lg:hidden rounded-xl overflow-hidden shadow-lg">
-          <Image
-            src={heroImage}
-            alt="Orlando commercial skyline — Appraisers of America serves all of Florida"
-            loading="eager"
-            fetchpriority="high"
-            width={680}
-            height={420}
-            class="w-full h-56 object-cover"
-          />
+        <!-- Quick trust stats -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-brand-300">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            {business.yearsExperience} Years
+          </span>
+          <span class="text-brand-600">·</span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            {business.countiesServed} Counties
+          </span>
+          <span class="text-brand-600">·</span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            FIRREA & USPAP
+          </span>
+          <span class="text-brand-600">·</span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            English · Español
+          </span>
         </div>
       </div>
 
-      <!-- Right: quote form -->
-      <div class="relative">
-        <!-- Desktop hero image behind form -->
-        <div class="hidden lg:block absolute inset-0 -bottom-8 -right-8 -top-8 rounded-xl overflow-hidden opacity-30">
-          <Image
-            src={heroImage}
-            alt="Orlando commercial skyline"
-            loading="eager"
-            fetchpriority="high"
-            width={700}
-            height={500}
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="relative z-10">
-          <QuoteForm source="home" heading="Free Quote in 2 Hours" id="quote" />
-        </div>
+      <!-- Right: form card -->
+      <div class="lg:ml-auto w-full max-w-md mx-auto lg:mx-0">
+        <QuoteForm source="home" heading="Free Quote in 2 Hours" id="quote" />
       </div>
 
     </div>
   </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-brand-900/80 to-transparent pointer-events-none" />
 </section>

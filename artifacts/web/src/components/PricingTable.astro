@@ -5,47 +5,56 @@ interface Props {
 const { compact = false } = Astro.props;
 
 const rows = [
-  { type: 'Multifamily 2–4 units',                          range: '$700 – $1,500' },
-  { type: 'Standard commercial (office, retail, small industrial)', range: '$2,500 – $5,000' },
-  { type: 'Hotels, motels, going concern',                   range: '$5,000 – $10,000+' },
-  { type: 'Special purpose (church, marina, mobile home park)', range: '$5,000 – $15,000+' },
-  { type: 'Narrative / litigation reports',                  range: '$5,000 – $12,000' },
+  { type: 'Multifamily 2–4 units',                               range: '$700 – $1,500',    highlight: false },
+  { type: 'Standard commercial (office, retail, small industrial)', range: '$2,500 – $5,000', highlight: true  },
+  { type: 'Hotels, motels, going concern',                        range: '$5,000 – $10,000+', highlight: false },
+  { type: 'Special purpose (church, marina, mobile home park)',   range: '$5,000 – $15,000+', highlight: false },
+  { type: 'Narrative / litigation reports',                       range: '$5,000 – $12,000',  highlight: false },
 ];
 
 const addons = [
   { label: 'Rush delivery (under 7 days)', value: '+$500 – $2,000' },
-  { label: 'Rental analysis', value: '+$300 – $750' },
+  { label: 'Rental analysis add-on',       value: '+$300 – $750'   },
 ];
 ---
 
-<section class={`${compact ? 'py-10' : 'py-16'} bg-white`} id="pricing">
+<section class={`${compact ? 'py-12' : 'py-20'} bg-white`} id="pricing">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
     {!compact ? (
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-ink-800 tracking-tight">
-          How Much Does a Commercial Appraisal Cost in Florida?
+      <>
+        <div class="flex items-center gap-3 mb-4 justify-center">
+          <div class="h-px w-12 bg-cta-500" />
+          <span class="text-cta-600 text-xs font-bold uppercase tracking-widest">Pricing</span>
+          <div class="h-px w-12 bg-cta-500" />
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-900 text-center tracking-tighter mb-3">
+          How Much Does a Commercial<br class="hidden md:block" /> Appraisal Cost in Florida?
         </h2>
-        <p class="text-ink-500 mt-3">Real ranges. No hidden fees. Exact quote in 2 hours.</p>
-      </div>
+        <p class="text-ink-500 text-center mb-12">Real ranges. No hidden fees. Exact quote in 2 business hours.</p>
+      </>
     ) : (
-      <h3 class="text-xl font-semibold text-ink-800 mb-6 tracking-tight">
+      <h3 class="text-xl font-bold text-ink-900 mb-6 tracking-tight">
         Typical Commercial Appraisal Fees in Florida
       </h3>
     )}
 
-    <div class="overflow-hidden rounded-lg border border-surface-border shadow-sm">
+    <div class="overflow-hidden rounded-2xl border border-surface-border shadow-sm">
       <table class="w-full text-sm">
         <thead>
-          <tr class="bg-brand-700 text-white">
-            <th class="text-left px-5 py-3 font-semibold">Property Type</th>
-            <th class="text-right px-5 py-3 font-semibold">Typical Fee Range</th>
+          <tr class="bg-brand-800 text-white">
+            <th class="text-left px-6 py-4 font-semibold text-sm tracking-wide">Property Type</th>
+            <th class="text-right px-6 py-4 font-semibold text-sm tracking-wide">Typical Fee</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((r, i) => (
-            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-surface-soft'}>
-              <td class="px-5 py-3.5 text-ink-700">{r.type}</td>
-              <td class="px-5 py-3.5 text-ink-800 font-medium text-right whitespace-nowrap">{r.range}</td>
+            <tr class={`border-b border-surface-line/60 ${r.highlight ? 'bg-brand-50' : i % 2 === 0 ? 'bg-white' : 'bg-surface-soft/50'}`}>
+              <td class="px-6 py-4 text-ink-700">
+                {r.highlight && <span class="inline-block w-1.5 h-1.5 rounded-full bg-cta-500 mr-2 mb-0.5 align-middle" />}
+                {r.type}
+              </td>
+              <td class="px-6 py-4 text-ink-900 font-bold text-right whitespace-nowrap">{r.range}</td>
             </tr>
           ))}
         </tbody>
@@ -53,24 +62,24 @@ const addons = [
     </div>
 
     {!compact && (
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
         {addons.map(a => (
-          <div class="flex justify-between items-center bg-surface-soft rounded-md px-4 py-3 text-sm border border-surface-line">
+          <div class="flex justify-between items-center bg-surface-soft rounded-xl px-5 py-3.5 text-sm border border-surface-line">
             <span class="text-ink-600">{a.label}</span>
-            <span class="font-medium text-ink-800">{a.value}</span>
+            <span class="font-bold text-ink-900 ml-4">{a.value}</span>
           </div>
         ))}
       </div>
     )}
 
-    <div class="mt-8 text-center">
+    <div class="mt-10 text-center">
       <a
         href="#quote"
-        class="inline-block bg-cta-600 hover:bg-cta-700 text-white font-medium rounded-md px-8 py-3.5 transition-colors"
+        class="inline-block bg-cta-600 hover:bg-cta-500 text-white font-bold rounded-xl px-10 py-4 transition-all duration-200 shadow-lg shadow-cta-700/20 hover:shadow-xl hover:shadow-cta-700/30 hover:-translate-y-0.5 text-sm"
       >
-        Get Your Exact Quote
+        Get Your Exact Quote — Free
       </a>
-      <p class="text-ink-400 text-xs mt-2">Typical response in 2 business hours</p>
+      <p class="text-ink-400 text-xs mt-3">Typical response in 2 business hours · Mon–Fri 8am–6pm</p>
     </div>
   </div>
 </section>
