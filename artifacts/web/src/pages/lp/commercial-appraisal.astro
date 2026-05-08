@@ -4,7 +4,7 @@ import HeroLP from '../../components/HeroLP.astro';
 import CityPills from '../../components/CityPills.astro';
 import WhoWeServe from '../../components/WhoWeServe.astro';
 import PropertyTypeGrid from '../../components/PropertyTypeGrid.astro';
-import PricingTable from '../../components/PricingTable.astro';
+import HowWePrice from '../../components/HowWePrice.astro';
 import ProcessTimeline from '../../components/ProcessTimeline.astro';
 import FAQ from '../../components/FAQ.astro';
 import faqs from '../../data/faqs-lp.json';
@@ -64,7 +64,7 @@ const pageDesc = `${region.subtitle} Jorge V. Canellas, RZ3108. USPAP compliant,
   </section>
 
   <PropertyTypeGrid compact={true} />
-  <PricingTable compact={true} />
+  <HowWePrice />
   <ProcessTimeline compact={true} />
   <FAQ data={faqs} heading="Quick Answers" />
 
