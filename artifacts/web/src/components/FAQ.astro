@@ -12,28 +12,30 @@ interface Props {
 const { data, heading = 'Frequently Asked Questions' } = Astro.props;
 ---
 
-<section class="py-20 bg-white" id="faq">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-24 bg-surface-soft" id="faq">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Section label -->
-    <div class="flex items-center gap-3 mb-4 justify-center">
-      <div class="h-px w-12 bg-cta-500" />
+    <div class="flex items-center gap-3 mb-5 justify-center">
+      <div class="h-px w-14 bg-cta-500" />
       <span class="text-cta-600 text-xs font-bold uppercase tracking-widest">FAQ</span>
-      <div class="h-px w-12 bg-cta-500" />
+      <div class="h-px w-14 bg-cta-500" />
     </div>
 
-    <h2 class="text-3xl md:text-4xl font-extrabold text-ink-900 text-center tracking-tighter mb-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-ink-900 text-center tracking-tighter mb-14">
       {heading}
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-      {data.map((item, i) => (
-        <details class="group bg-white border border-surface-border rounded-xl overflow-hidden hover:border-brand-200 transition-colors self-start">
-          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer select-none gap-4">
-            <h3 class="text-sm font-semibold text-ink-800 text-left group-open:text-brand-700 transition-colors">{item.q}</h3>
-            <div class="w-7 h-7 rounded-full border border-surface-border flex items-center justify-center flex-shrink-0 group-open:bg-brand-700 group-open:border-brand-700 transition-all duration-200">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {data.map((item) => (
+        <details class="group bg-white border border-surface-border rounded-2xl overflow-hidden hover:border-brand-300 hover:shadow-lg hover:shadow-brand-900/6 transition-all duration-300 self-start">
+          <summary class="flex items-start justify-between px-7 py-6 cursor-pointer select-none gap-5">
+            <h3 class="text-base font-semibold text-ink-800 text-left leading-snug group-open:text-brand-700 transition-colors pt-0.5">
+              {item.q}
+            </h3>
+            <div class="w-8 h-8 rounded-full border-2 border-surface-border flex items-center justify-center flex-shrink-0 group-open:bg-brand-700 group-open:border-brand-700 transition-all duration-200 mt-0.5">
               <svg
-                class="faq-icon w-3.5 h-3.5 text-ink-500 group-open:text-white transition-colors"
+                class="w-3.5 h-3.5 text-ink-400 group-open:text-white transition-all duration-200 group-open:rotate-180"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -43,8 +45,8 @@ const { data, heading = 'Frequently Asked Questions' } = Astro.props;
               </svg>
             </div>
           </summary>
-          <div class="faq-body px-6 pb-5 border-t border-surface-line">
-            <p class="text-ink-600 text-sm leading-relaxed pt-4">{item.a}</p>
+          <div class="px-7 pb-7 border-t border-surface-line">
+            <p class="text-ink-600 text-sm leading-relaxed pt-5">{item.a}</p>
           </div>
         </details>
       ))}
