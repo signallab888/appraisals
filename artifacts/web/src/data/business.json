@@ -25,7 +25,7 @@
   ],
   "languages": ["English", "Spanish"],
   "compliance": ["USPAP", "FIRREA", "SBA 504/7(a) ready"],
-  "support": "MAI-supported reports",
+  "support": "USPAP-grade reports",
   "approachUsed": ["Income Approach", "Sales Comparison Approach", "Cost Approach"],
   "reportTypes": ["Restricted Appraisal Report", "Appraisal Report", "Narrative"],
   "countiesServed": 67,
