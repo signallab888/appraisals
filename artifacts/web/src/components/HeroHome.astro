@@ -62,12 +62,11 @@ import business from '../data/business.json';
         </div>
 
         <!-- Quick trust stats -->
-        <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-6 gap-y-2.5 text-sm text-brand-300">
+        <div class="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2.5 text-sm text-brand-300">
           {[
             `${business.yearsExperience} Years`,
             `${business.countiesServed} Counties`,
             'FIRREA & USPAP',
-            'English · Español',
           ].map(item => (
             <span class="flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 text-cta-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
