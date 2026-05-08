@@ -6,15 +6,15 @@ const { compact = false } = Astro.props;
 
 const rows = [
   { type: 'Multifamily 2–4 units',                               range: '$700 – $1,500',    highlight: false },
-  { type: 'Standard commercial (office, retail, small industrial)', range: '$2,500 – $5,000', highlight: true  },
-  { type: 'Hotels, motels, going concern',                        range: '$5,000 – $10,000+', highlight: false },
-  { type: 'Special purpose (church, marina, mobile home park)',   range: '$5,000 – $15,000+', highlight: false },
-  { type: 'Narrative / litigation reports',                       range: '$5,000 – $12,000',  highlight: false },
+  { type: 'Standard commercial (office, retail, industrial)',     range: '$2,500 – $5,000',  highlight: true  },
+  { type: 'Hotels, motels, going concern',                       range: '$5,000 – $10,000+', highlight: false },
+  { type: 'Special purpose (church, marina, mobile home park)',  range: '$5,000 – $15,000+', highlight: false },
+  { type: 'Narrative / litigation reports',                      range: '$5,000 – $12,000',  highlight: false },
 ];
 
 const addons = [
   { label: 'Rush delivery', value: '+$500 – $2,000' },
-  { label: 'Rental analysis add-on',       value: '+$300 – $750'   },
+  { label: 'Rental analysis add-on', value: '+$300 – $750' },
 ];
 ---
 
@@ -39,7 +39,21 @@ const addons = [
       </h3>
     )}
 
-    <div class="overflow-hidden rounded-2xl border border-surface-border shadow-sm">
+    <!-- Mobile: card stack -->
+    <div class="sm:hidden space-y-3">
+      {rows.map(r => (
+        <div class={`rounded-2xl border px-5 py-4 flex justify-between items-center gap-3 ${r.highlight ? 'bg-brand-50 border-brand-200' : 'bg-white border-surface-line'}`}>
+          <p class={`text-sm leading-snug ${r.highlight ? 'text-brand-900 font-semibold' : 'text-ink-700'}`}>
+            {r.highlight && <span class="inline-block w-1.5 h-1.5 rounded-full bg-cta-500 mr-2 mb-0.5 align-middle" />}
+            {r.type}
+          </p>
+          <p class="text-sm font-black text-ink-900 whitespace-nowrap">{r.range}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Desktop: table -->
+    <div class="hidden sm:block overflow-hidden rounded-2xl border border-surface-border shadow-sm">
       <table class="w-full text-sm">
         <thead>
           <tr class="bg-brand-800 text-white">
