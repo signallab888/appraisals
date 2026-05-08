@@ -10,6 +10,7 @@ import landImg         from '../assets/verticals/vacant-land.jpg';
 import mixedUseImg     from '../assets/verticals/mixed-use.jpg';
 import insuranceImg    from '../assets/verticals/insurance-replacement.jpg';
 import selfStorageImg  from '../assets/verticals/self-storage.png';
+import officeImg       from '../assets/verticals/office-buildings.png';
 
 interface Props {
   compact?: boolean;
@@ -17,6 +18,7 @@ interface Props {
 const { compact = false } = Astro.props;
 
 const photoMap: Record<string, ImageMetadata> = {
+  office:      officeImg,
   hotel:       hotelImg,
   marina:      marinaImg,
   industrial:  warehouseImg,
