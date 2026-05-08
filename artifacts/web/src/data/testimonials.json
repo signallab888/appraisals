@@ -1,22 +1,51 @@
 [
   {
-    "quote": "They were punctual and well organized. I can't recommend them enough.",
-    "name": "Adam",
-    "role": "Broker / Owner"
+    "name": "Andrew Philippone",
+    "badge": "Local Guide",
+    "reviewCount": 19,
+    "timeAgo": "7 months ago",
+    "quote": "Great service — George came to the property and did the appraisal within two days of the order, and three days later we received a full report. A pleasure to work with. As a broker for 30 years, you learn to appreciate the good ones!"
   },
   {
-    "quote": "Exceptional service and reliability. They delivered ahead of schedule.",
-    "name": "Maria",
-    "role": "Real Estate Specialist"
+    "name": "David Ferguson",
+    "badge": null,
+    "reviewCount": 12,
+    "timeAgo": "8 months ago",
+    "quote": "Contacted Appraisers of America for a rush appraisal of a church property. Jorge completed the appraisal and all supporting documentation in less than a week — very thorough and detailed. He called personally to confirm the report was emailed. A genuinely delightful experience."
   },
   {
-    "quote": "Professional from start to finish. The report was exactly what my bank needed.",
-    "name": "Robert",
-    "role": "Private Investor"
+    "name": "Brahian Gutierrez",
+    "badge": null,
+    "reviewCount": 2,
+    "timeAgo": "1 year ago",
+    "quote": "Our experience was truly outstanding. Sarah was incredibly efficient and always available. Jorge was exceptionally knowledgeable and thorough. We were told two weeks — we received results even sooner. We are extremely satisfied and will absolutely work with them again."
   },
   {
-    "quote": "Clear communication, fair pricing, and a thorough report. Will use again.",
-    "name": "Linda",
-    "role": "Property Owner"
+    "name": "Angela Maxwell",
+    "badge": null,
+    "reviewCount": 5,
+    "timeAgo": "1 year ago",
+    "quote": "This was our first commercial appraisal and we had lots of questions. Victor and Sara were so kind and patient with us. The work was done exactly as promised and the report delivered very timely. I highly recommend them."
+  },
+  {
+    "name": "David Hechavarria",
+    "badge": null,
+    "reviewCount": 14,
+    "timeAgo": "1 year ago",
+    "quote": "The best appraiser ever. Completed on time, with great attention to detail and excellent service. Highly recommend due to their vast experience and knowledge."
+  },
+  {
+    "name": "Yeny Castellanos",
+    "badge": "Local Guide",
+    "reviewCount": 17,
+    "timeAgo": "1 year ago",
+    "quote": "As a real estate agent I have worked with many appraisers and inspectors. I know how to spot the efficient and professional ones. I definitely recommend this company 100%."
+  },
+  {
+    "name": "Michelle Burdo",
+    "badge": null,
+    "reviewCount": 10,
+    "timeAgo": "1 year ago",
+    "quote": "Appraisal was thorough and completed in a timely manner. Grateful for their expertise and knowledge of Fannie/Freddie guidelines."
   }
 ]
