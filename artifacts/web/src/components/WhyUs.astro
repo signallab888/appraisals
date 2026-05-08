@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import appraiserPhoto from '../assets/about/appraiser-photo.jpg';
+import appraiserPhoto from '../assets/about/jorge.jpg';
 import business from '../data/business.json';
 
 const points = [
@@ -31,7 +31,7 @@ const points = [
 ];
 ---
 
-<section class="py-20 bg-brand-900 text-white relative overflow-hidden">
+<section class="py-20 bg-brand-900 text-white relative overflow-hidden" id="whyus">
   <!-- Subtle background glow -->
   <div class="absolute inset-0 opacity-8" style="background-image: radial-gradient(circle at 70% 50%, #3568a6 0%, transparent 55%);" />
 
@@ -46,7 +46,7 @@ const points = [
             alt="Jorge V. Canellas, State Certified General Appraiser"
             width={600}
             height={700}
-            class="w-full h-[480px] lg:h-[560px] object-cover"
+            class="w-full h-[480px] lg:h-[560px] object-cover object-top"
           />
           <!-- Overlay name card -->
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-900/95 to-transparent px-6 pb-6 pt-14">
