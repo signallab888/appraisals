@@ -5,8 +5,8 @@ import business from '../data/business.json';
 
 const points = [
   {
-    title: 'State Certified General',
-    body: `Jorge V. Canellas, ${business.primaryAppraiser.license}. Florida's highest commercial license level.`,
+    title: 'Required by Law · License RZ3108',
+    body: `State Certified General Real Estate Appraiser — Florida's highest commercial license level, mandated by FIRREA for federally-related transactions.`,
   },
   {
     title: 'USPAP-Grade Methodology',
@@ -64,7 +64,7 @@ const points = [
             <!-- Name card at the bottom, also inside the relative container -->
             <div class="absolute bottom-0 left-0 right-0 px-6 pb-6">
               <p class="text-white font-bold text-lg leading-tight drop-shadow-lg">Jorge V. Canellas</p>
-              <p class="text-brand-200 text-sm mt-1 drop-shadow">{business.primaryAppraiser.license} · State Certified General</p>
+              <p class="text-brand-200 text-sm mt-1 drop-shadow">{business.primaryAppraiser.license} · State Certified General · Required by Law</p>
               <div class="flex flex-wrap gap-2 mt-3">
                 {business.compliance.slice(0, 3).map(c => (
                   <span class="bg-white/20 border border-white/30 text-white rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm">{c}</span>
