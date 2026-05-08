@@ -8,7 +8,6 @@ import warehouseImg    from '../assets/verticals/warehouse-industrial.jpg';
 import mhpImg          from '../assets/verticals/mobile-home-parks.jpg';
 import landImg         from '../assets/verticals/vacant-land.jpg';
 import mixedUseImg     from '../assets/verticals/mixed-use.jpg';
-import insuranceImg    from '../assets/verticals/insurance-replacement.jpg';
 import selfStorageImg  from '../assets/verticals/self-storage.png';
 import officeImg       from '../assets/verticals/office-buildings.png';
 import multifamilyImg  from '../assets/verticals/multifamily.png';
@@ -35,9 +34,12 @@ const photoMap: Record<string, ImageMetadata> = {
   medical:     medicalImg,
   religious:   religiousImg,
 };
+
+const primary   = propertyTypes.filter(pt => !pt.secondary);
+const secondary = propertyTypes.filter(pt =>  pt.secondary);
 ---
 
-<section class={`${compact ? 'py-12' : 'py-20'} bg-white`}>
+<section class={`${compact ? 'py-12' : 'py-20'} bg-white`} id="services">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {!compact && (
@@ -59,14 +61,14 @@ const photoMap: Record<string, ImageMetadata> = {
       <h3 class="text-xl font-bold text-ink-900 mb-6 tracking-tight">Property Types We Appraise</h3>
     )}
 
+    <!-- Primary: photo cards (unchanged) -->
     <div class={`grid gap-4 ${compact ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'}`}>
-      {propertyTypes.map(pt => {
+      {primary.map(pt => {
         const photo = photoMap[pt.slug];
         return (
           <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-default shadow-sm hover:shadow-xl hover:shadow-ink-900/15 transition-all duration-300 hover:-translate-y-1">
             {photo ? (
               <>
-                {/* Real photo background */}
                 <Image
                   src={photo}
                   alt={pt.name}
@@ -74,15 +76,11 @@ const photoMap: Record<string, ImageMetadata> = {
                   height={300}
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Gradient overlay */}
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/40 to-transparent" />
               </>
             ) : (
-              /* No photo — navy card */
               <div class="absolute inset-0 bg-gradient-to-br from-brand-800 to-brand-900" />
             )}
-
-            {/* Text content */}
             <div class="absolute inset-0 flex flex-col justify-end p-4">
               <p class="font-bold text-white text-sm leading-tight drop-shadow">{pt.name}</p>
               {!compact && (
@@ -93,5 +91,32 @@ const photoMap: Record<string, ImageMetadata> = {
         );
       })}
     </div>
+
+    <!-- Secondary: compact mini-cards -->
+    {!compact && (
+      <div class="mt-6 rounded-2xl border border-surface-line bg-surface-soft px-6 py-6">
+        <p class="text-xs font-bold uppercase tracking-widest text-ink-400 mb-4">Also Appraised</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {secondary.map(pt => (
+            <div class="group flex flex-col gap-1 rounded-xl border border-surface-line bg-white px-4 py-3 hover:border-brand-300 hover:shadow-md hover:shadow-brand-900/8 transition-all duration-200 cursor-default">
+              <span class="font-semibold text-brand-900 text-sm leading-tight">{pt.name}</span>
+              <span class="text-ink-400 text-[11px] leading-snug">{pt.blurb}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Secondary in compact mode: simple pill list -->
+    {compact && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {secondary.map(pt => (
+          <span class="rounded-full border border-surface-line bg-surface-soft px-3 py-1 text-xs font-medium text-ink-600">
+            {pt.name}
+          </span>
+        ))}
+      </div>
+    )}
+
   </div>
 </section>
